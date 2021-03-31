@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Main {
 
@@ -24,18 +25,21 @@ public class Main {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] split = line.trim().replaceAll(" +", " ").split(" ");
-                input.put(split[4], Integer.parseInt(split[6]));
+                input.put(split[4].toLowerCase(), Integer.parseInt(split[6]));
             }
             allData.add(input);
             br.close();
         }
-
-        String name = "CabbageRoll";
-
-        for (int i = 0; i < noe; i++) {
-            System.out.println(allData.get(i).get(name));
+        Scanner in = new Scanner(System.in);
+        String input;
+        while (!(input = in.nextLine().toLowerCase()).equals("exit")) {
+            System.out.print(input + ": ");
+            for (int i = 0; i < noe; i++) {
+                System.out.print(allData.get(i).get(input) + ", ");
+            }
+            System.out.println();
         }
-
+        in.close();
     }
 
 }
